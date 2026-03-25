@@ -1,0 +1,27 @@
+{
+  "name": "lab-testing-route-system",
+  "version": "1.0.0",
+  "description": "Лабораторный маршрут испытаний — система управления циклом испытаний строительных материалов",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "db:seed": "npx tsx src/lib/db/seed.ts"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/uuid": "^10.0.0",
+    "better-sqlite3": "^12.8.0",
+    "lucide-react": "^1.7.0",
+    "next": "^16.2.1",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "uuid": "^13.0.0"
+  }
+}
