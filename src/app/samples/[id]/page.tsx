@@ -58,13 +58,22 @@ export default function SampleDetailPage() {
   const [resultForm, setResultForm] = useState({ result_value: "", result_unit: "", result_text: "", is_passed: true, notes: "", operator: "", equipment_id: "" });
 
   const fetchData = useCallback(async () => {
-    const [sampleRes, eqRes] = await Promise.all([
-      fetch(`/api/samples/${params.id}`),
-      fetch("/api/equipment"),
-    ]);
-    setData(await sampleRes.json());
-    setEquipment(await eqRes.json());
-    setLoading(false);
+    try {
+      const [sampleRes, eqRes] = await Promise.all([
+        fetch(`/api/samples/${params.id}`),
+        fetch("/api/equipment"),
+      ]);
+      if (sampleRes.ok) {
+        setData(await sampleRes.json());
+      }
+      if (eqRes.ok) {
+        setEquipment(await eqRes.json());
+      }
+    } catch (e) {
+      console.error("Failed to fetch data:", e);
+    } finally {
+      setLoading(false);
+    }
   }, [params.id]);
 
   useEffect(() => { fetchData(); }, [fetchData]);

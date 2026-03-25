@@ -24,6 +24,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     FROM sample_tests st
     JOIN mandatory_tests mt ON st.mandatory_test_id = mt.id
     LEFT JOIN equipment e ON st.equipment_id = e.id
+    WHERE st.sample_id = ?
     ORDER BY st.sort_order
   `).all(id);
 
